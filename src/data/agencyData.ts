@@ -163,7 +163,7 @@ export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
     challenge:
       'A marca utilizava peças desconexas em cada canal, reduzindo a percepção de valor durante negociações com novos clientes.',
     solution:
-      'Criamos uma identidade visual coesa com paleta grafite e laranja queimado, tipografia padronizada e kit de banners prontos para campanhas.',
+      'Criamos uma identidade visual coesa com paleta grafite e violeta corporativo, tipografia padronizada e kit de banners prontos para campanhas.',
     deliverables: [
       'Guia visual e paleta corporativa',
       'Templates para banners e redes sociais',

@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  /* Core Neutral & Cimento Queimado Surfaces (architectural mineral gray canvas + graphite #1F2937 + burnt orange) */
+  /* Core Neutral & Cimento Queimado Surfaces (architectural mineral gray canvas + graphite #1F2937 + purple) */
   --background: #D4D8DD;
   --foreground: #1F2937;
 
@@ -18,13 +18,13 @@
   --popover: #E6E9ED;
   --popover-foreground: #1F2937;
 
-  /* Brand Action Accent — Burnt Orange calibrated for WCAG AA >= 4.5:1 contrast on cement & white */
-  --primary: #C2410C;
-  --primary-hover: #9A3412;
+  /* Brand Action Accent — Corporate Purple calibrated for WCAG AA >= 4.5:1 contrast on cement & white */
+  --primary: #7C3AED;
+  --primary-hover: #5B21B6;
   --primary-foreground: #FFFFFF;
-  --brand-orange: #EA580C;
-  --accent-text: #9A3412;
-  --accent-on-dark: #FB923C;
+  --brand-purple: #8B5CF6;
+  --accent-text: #5B21B6;
+  --accent-on-dark: #C4B5FD;
 
   /* Structural Graphite Secondary */
   --secondary: #1F2937;
@@ -34,8 +34,8 @@
   --muted: #C6CBD2;
   --muted-foreground: #374151;
 
-  --accent: #E8DDD5;
-  --accent-foreground: #9A3412;
+  --accent: #E2DCEB;
+  --accent-foreground: #5B21B6;
 
   --success: #15803D;
   --success-surface: #E6F2EA;
@@ -48,7 +48,7 @@
   --border-strong: #949CA8;
   --border-graphite: #374151;
   --input: #A8B0BC;
-  --ring: #C2410C;
+  --ring: #7C3AED;
 
   --radius: 0.75rem;
 
@@ -62,14 +62,14 @@
     radial-gradient(ellipse 70% 60% at 15% 80%, rgba(31, 41, 55, 0.08) 0%, transparent 65%),
     linear-gradient(180deg, #D6DAE0 0%, #CBD0D7 100%);
   --gradient-graphite: linear-gradient(135deg, #1F2937 0%, #111827 100%);
-  --gradient-cta: linear-gradient(135deg, #C2410C 0%, #9A3412 100%);
+  --gradient-cta: linear-gradient(135deg, #7C3AED 0%, #5B21B6 100%);
   --gradient-scrim: linear-gradient(180deg, rgba(17, 24, 39, 0.04) 0%, rgba(17, 24, 39, 0.72) 100%);
-  --gradient-surface-warm: linear-gradient(145deg, #E4E7EB 0%, #DCD4CE 100%);
+  --gradient-surface-warm: linear-gradient(145deg, #E4E7EB 0%, #DCD8E6 100%);
 
   /* Semantic Shadows (single-elevation discipline) */
   --shadow-card: 0 1px 2px rgba(17, 24, 39, 0.06), 0 10px 24px -14px rgba(17, 24, 39, 0.14);
   --shadow-elevated: 0 20px 40px -20px rgba(17, 24, 39, 0.24), 0 2px 6px rgba(17, 24, 39, 0.08);
-  --shadow-cta: 0 10px 24px -8px rgba(194, 65, 12, 0.45);
+  --shadow-cta: 0 10px 24px -8px rgba(124, 58, 237, 0.45);
   --shadow-floating: 0 12px 30px -6px rgba(17, 24, 39, 0.34);
 
   /* Fonts */
@@ -94,7 +94,7 @@
   --color-primary: var(--primary);
   --color-primary-hover: var(--primary-hover);
   --color-primary-foreground: var(--primary-foreground);
-  --color-brand-orange: var(--brand-orange);
+  --color-brand-purple: var(--brand-purple);
   --color-accent-text: var(--accent-text);
   --color-accent-on-dark: var(--accent-on-dark);
   --color-secondary: var(--secondary);
