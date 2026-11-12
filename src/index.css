@@ -1,0 +1,213 @@
+@import "tailwindcss";
+
+:root {
+  /* Core Neutral & Cimento Queimado Surfaces (architectural mineral gray canvas + graphite #1F2937 + burnt orange) */
+  --background: #D4D8DD;
+  --foreground: #1F2937;
+
+  --surface-elevated: #E1E4E8;
+  --surface-subtle: #C6CBD2;
+  --surface-input: #ECEEF1;
+  --surface-graphite: #1F2937;
+  --surface-graphite-deep: #111827;
+  --surface-graphite-soft: #273244;
+
+  --card: #E4E7EB;
+  --card-foreground: #1F2937;
+
+  --popover: #E6E9ED;
+  --popover-foreground: #1F2937;
+
+  /* Brand Action Accent — Burnt Orange calibrated for WCAG AA >= 4.5:1 contrast on cement & white */
+  --primary: #C2410C;
+  --primary-hover: #9A3412;
+  --primary-foreground: #FFFFFF;
+  --brand-orange: #EA580C;
+  --accent-text: #9A3412;
+  --accent-on-dark: #FB923C;
+
+  /* Structural Graphite Secondary */
+  --secondary: #1F2937;
+  --secondary-hover: #111827;
+  --secondary-foreground: #F9FAFB;
+
+  --muted: #C6CBD2;
+  --muted-foreground: #374151;
+
+  --accent: #E8DDD5;
+  --accent-foreground: #9A3412;
+
+  --success: #15803D;
+  --success-surface: #E6F2EA;
+  --success-border: #86EFAC;
+
+  --destructive: #B91C1C;
+  --destructive-foreground: #FFFFFF;
+
+  --border: #B8BFC8;
+  --border-strong: #949CA8;
+  --border-graphite: #374151;
+  --input: #A8B0BC;
+  --ring: #C2410C;
+
+  --radius: 0.75rem;
+
+  /* Semantic Gradients — Cimento Queimado mineral depth */
+  --gradient-hero:
+    radial-gradient(ellipse 75% 55% at 78% 18%, rgba(255, 255, 255, 0.28) 0%, transparent 60%),
+    radial-gradient(ellipse 65% 50% at 14% 82%, rgba(31, 41, 55, 0.1) 0%, transparent 65%),
+    linear-gradient(180deg, #DDE0E5 0%, #CFD4DA 100%);
+  --gradient-cement-band:
+    radial-gradient(ellipse 60% 50% at 85% 20%, rgba(255, 255, 255, 0.18) 0%, transparent 60%),
+    radial-gradient(ellipse 70% 60% at 15% 80%, rgba(31, 41, 55, 0.08) 0%, transparent 65%),
+    linear-gradient(180deg, #D6DAE0 0%, #CBD0D7 100%);
+  --gradient-graphite: linear-gradient(135deg, #1F2937 0%, #111827 100%);
+  --gradient-cta: linear-gradient(135deg, #C2410C 0%, #9A3412 100%);
+  --gradient-scrim: linear-gradient(180deg, rgba(17, 24, 39, 0.04) 0%, rgba(17, 24, 39, 0.72) 100%);
+  --gradient-surface-warm: linear-gradient(145deg, #E4E7EB 0%, #DCD4CE 100%);
+
+  /* Semantic Shadows (single-elevation discipline) */
+  --shadow-card: 0 1px 2px rgba(17, 24, 39, 0.06), 0 10px 24px -14px rgba(17, 24, 39, 0.14);
+  --shadow-elevated: 0 20px 40px -20px rgba(17, 24, 39, 0.24), 0 2px 6px rgba(17, 24, 39, 0.08);
+  --shadow-cta: 0 10px 24px -8px rgba(194, 65, 12, 0.45);
+  --shadow-floating: 0 12px 30px -6px rgba(17, 24, 39, 0.34);
+
+  /* Fonts */
+  --font-display: "Outfit", system-ui, -apple-system, sans-serif;
+  --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface-elevated: var(--surface-elevated);
+  --color-surface-subtle: var(--surface-subtle);
+  --color-surface-input: var(--surface-input);
+  --color-surface-graphite: var(--surface-graphite);
+  --color-surface-graphite-deep: var(--surface-graphite-deep);
+  --color-surface-graphite-soft: var(--surface-graphite-soft);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-brand-orange: var(--brand-orange);
+  --color-accent-text: var(--accent-text);
+  --color-accent-on-dark: var(--accent-on-dark);
+  --color-secondary: var(--secondary);
+  --color-secondary-hover: var(--secondary-hover);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-success: var(--success);
+  --color-success-surface: var(--success-surface);
+  --color-success-border: var(--success-border);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-border-graphite: var(--border-graphite);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --font-display: var(--font-display);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5.5rem;
+  }
+
+  body {
+    background-color: var(--background);
+    background-image:
+      radial-gradient(circle at 18% 12%, rgba(255, 255, 255, 0.22) 0%, transparent 45%),
+      radial-gradient(circle at 82% 38%, rgba(31, 41, 55, 0.06) 0%, transparent 50%),
+      radial-gradient(circle at 30% 78%, rgba(255, 255, 255, 0.14) 0%, transparent 48%);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.6;
+  }
+
+  h1, h2, h3, h4, .font-display {
+    font-family: var(--font-display);
+  }
+
+  h1, h2, h3 {
+    text-wrap: balance;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
+}
+
+/* Semantic surface utilities */
+.bg-hero-gradient {
+  background-image: var(--gradient-hero);
+}
+
+.bg-cement-band {
+  background-image: var(--gradient-cement-band);
+}
+
+.bg-graphite-gradient {
+  background-image: var(--gradient-graphite);
+}
+
+.bg-cta-gradient {
+  background-image: var(--gradient-cta);
+}
+
+.bg-warm-surface-gradient {
+  background-image: var(--gradient-surface-warm);
+}
+
+.bg-media-scrim {
+  background-image: var(--gradient-scrim);
+}
+
+.shadow-card-token {
+  box-shadow: var(--shadow-card);
+}
+
+.shadow-elevated-token {
+  box-shadow: var(--shadow-elevated);
+}
+
+.shadow-cta-token {
+  box-shadow: var(--shadow-cta);
+}
+
+.shadow-floating-token {
+  box-shadow: var(--shadow-floating);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
