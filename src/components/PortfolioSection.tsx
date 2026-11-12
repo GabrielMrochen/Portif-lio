@@ -1,6 +1,12 @@
-import { useState } from 'react';
-import { ArrowUpRight, Check, MessageCircle } from 'lucide-react';
-import { motion, useReducedMotion } from 'motion/react';
+import { useState, type KeyboardEvent } from 'react';
+import {
+  ArrowUpRight,
+  Check,
+  ChevronLeft,
+  ChevronRight,
+  MessageCircle,
+} from 'lucide-react';
+import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 import { Button } from '@/src/components/ui/button';
 import {
   Dialog,
@@ -22,6 +28,8 @@ export function PortfolioSection() {
   const shouldReduceMotion = useReducedMotion();
   const [selectedCategory, setSelectedCategory] =
     useState<PortfolioCategory>('Todos');
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [direction, setDirection] = useState<1 | -1>(1);
   const [activeProject, setActiveProject] = useState<PortfolioProject | null>(
     null,
   );
@@ -30,6 +38,44 @@ export function PortfolioSection() {
     selectedCategory === 'Todos'
       ? PORTFOLIO_PROJECTS
       : PORTFOLIO_PROJECTS.filter((p) => p.category === selectedCategory);
+
+  const totalSlides = filteredProjects.length;
+  const safeIndex = totalSlides > 0 ? currentIndex % totalSlides : 0;
+  const currentProject = filteredProjects[safeIndex] ?? filteredProjects[0];
+
+  function handleCategoryChange(category: PortfolioCategory) {
+    setSelectedCategory(category);
+    setDirection(1);
+    setCurrentIndex(0);
+  }
+
+  function goToPrevious() {
+    if (totalSlides <= 1) return;
+    setDirection(-1);
+    setCurrentIndex((prev) => (prev - 1 + totalSlides) % totalSlides);
+  }
+
+  function goToNext() {
+    if (totalSlides <= 1) return;
+    setDirection(1);
+    setCurrentIndex((prev) => (prev + 1) % totalSlides);
+  }
+
+  function goToSlide(index: number) {
+    if (index === safeIndex) return;
+    setDirection(index > safeIndex ? 1 : -1);
+    setCurrentIndex(index);
+  }
+
+  function handleKeyDown(event: KeyboardEvent<HTMLDivElement>) {
+    if (event.key === 'ArrowLeft') {
+      event.preventDefault();
+      goToPrevious();
+    } else if (event.key === 'ArrowRight') {
+      event.preventDefault();
+      goToNext();
+    }
+  }
 
   return (
     <section
@@ -61,7 +107,7 @@ export function PortfolioSection() {
                   type="button"
                   role="tab"
                   aria-selected={isSelected}
-                  onClick={() => setSelectedCategory(category)}
+                  onClick={() => handleCategoryChange(category)}
                   className={
                     isSelected
                       ? 'min-h-[40px] rounded-md bg-surface-elevated px-3.5 py-2 text-xs font-semibold text-foreground shadow-card-token transition-colors duration-150 whitespace-nowrap shrink-0 cursor-pointer'
@@ -75,72 +121,163 @@ export function PortfolioSection() {
           </div>
         </div>
 
-        {/* Projects Grid */}
-        <div className="mt-10 grid grid-cols-1 gap-7 md:grid-cols-2">
-          {filteredProjects.map((project, idx) => (
-            <motion.article
-              key={project.id}
-              initial={shouldReduceMotion ? false : { opacity: 0, y: 12 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.08 }}
-              transition={{
-                duration: 0.3,
-                delay: idx * 0.05,
-                ease: [0.16, 1, 0.3, 1],
-              }}
-              className="group flex flex-col overflow-hidden rounded-xl border border-border bg-background shadow-card-token transition-all duration-200 hover:border-border-strong hover:-translate-y-0.5"
-            >
-              <button
-                type="button"
-                onClick={() => setActiveProject(project)}
-                className="flex flex-1 flex-col text-left cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-xl"
-              >
-                <ResilientImage
-                  src={project.image}
-                  alt={project.imageAlt}
-                  fallbackTitle={project.client}
-                  containerClassName="aspect-[4/3] w-full border-b border-border"
-                  className="transition-transform duration-300 ease-out group-hover:scale-[1.03]"
-                />
-
-                <div className="flex flex-1 flex-col justify-between p-6">
-                  <div>
-                    {/* Zero-pill unboxed metadata */}
-                    <p className="text-xs font-medium text-muted-foreground">
-                      {project.category} <span aria-hidden="true">·</span> Entrega em{' '}
-                      <span className="tabular-nums">{project.deliveryTime}</span>
-                    </p>
-
-                    <h3 className="mt-2 font-display text-xl font-bold leading-snug text-foreground group-hover:text-accent-text transition-colors duration-150">
-                      {project.title}
-                    </h3>
-
-                    <p className="mt-1 text-sm font-medium text-foreground/80">
-                      {project.client}
-                    </p>
-
-                    <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                      {project.summary}
-                    </p>
+        {/* Interactive Projects Carousel */}
+        {currentProject && (
+          <div
+            role="region"
+            aria-roledescription="carrossel"
+            aria-label="Carrossel de projetos da Vyronix Tech"
+            tabIndex={0}
+            onKeyDown={handleKeyDown}
+            className="mt-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-xl"
+          >
+            <div className="overflow-hidden rounded-xl border border-border bg-background shadow-card-token">
+              <AnimatePresence mode="wait" initial={false} custom={direction}>
+                <motion.article
+                  key={currentProject.id}
+                  custom={direction}
+                  initial={
+                    shouldReduceMotion
+                      ? false
+                      : { opacity: 0, x: direction * 28 }
+                  }
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={
+                    shouldReduceMotion
+                      ? { opacity: 0 }
+                      : { opacity: 0, x: direction * -28 }
+                  }
+                  transition={{ duration: 0.24, ease: [0.16, 1, 0.3, 1] }}
+                  className="grid grid-cols-1 lg:grid-cols-12 lg:items-stretch"
+                >
+                  {/* Visual Showcase */}
+                  <div className="lg:col-span-7 flex">
+                    <ResilientImage
+                      src={currentProject.image}
+                      alt={currentProject.imageAlt}
+                      fallbackTitle={currentProject.client}
+                      containerClassName="aspect-[16/10] lg:aspect-auto lg:h-full w-full border-b lg:border-b-0 lg:border-r border-border"
+                    />
                   </div>
 
-                  <div className="mt-6 border-t border-border pt-4">
-                    <p className="font-display text-base font-bold text-accent-text tabular-nums">
-                      {project.metricValue}
-                    </p>
-                    <p className="mt-0.5 text-xs text-muted-foreground">
-                      {project.metricContext}
-                    </p>
-                    <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-foreground group-hover:text-accent-text transition-colors">
-                      <span>Ver detalhes do projeto</span>
-                      <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
-                    </span>
+                  {/* Project Summary & Result */}
+                  <div className="lg:col-span-5 flex flex-col justify-between p-6 sm:p-8">
+                    <div>
+                      <p className="text-xs font-medium text-muted-foreground">
+                        {currentProject.category}{' '}
+                        <span aria-hidden="true">·</span> Entrega em{' '}
+                        <span className="tabular-nums">
+                          {currentProject.deliveryTime}
+                        </span>
+                      </p>
+
+                      <h3 className="mt-2.5 font-display text-2xl font-bold leading-snug text-foreground">
+                        {currentProject.title}
+                      </h3>
+
+                      <p className="mt-1 text-sm font-semibold text-foreground/85">
+                        {currentProject.client}
+                      </p>
+
+                      <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+                        {currentProject.summary}
+                      </p>
+
+                      <div className="mt-6 border-t border-border pt-5">
+                        <p className="font-display text-lg font-bold text-accent-text tabular-nums">
+                          {currentProject.metricValue}
+                        </p>
+                        <p className="mt-0.5 text-xs text-muted-foreground">
+                          {currentProject.metricContext}
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="mt-7 flex flex-wrap items-center gap-3 pt-4 border-t border-border">
+                      <Button
+                        type="button"
+                        onClick={() => setActiveProject(currentProject)}
+                      >
+                        <span>Ver detalhes do projeto</span>
+                        <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+                      </Button>
+
+                      <a
+                        href={buildWhatsAppUrl(
+                          `Olá, Vyronix Tech! Vi o projeto "${currentProject.title}" no portfólio e gostaria de solicitar um orçamento.`,
+                        )}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex min-h-[44px] items-center px-2 text-sm font-semibold text-foreground transition-colors hover:text-accent-text whitespace-nowrap"
+                      >
+                        Quero um site assim
+                      </a>
+                    </div>
                   </div>
+                </motion.article>
+              </AnimatePresence>
+            </div>
+
+            {/* Carousel Controls Bar */}
+            <div className="mt-5 flex flex-wrap items-center justify-between gap-4">
+              <div className="flex items-center gap-3">
+                <span className="font-mono text-xs font-medium text-muted-foreground tabular-nums">
+                  {String(safeIndex + 1).padStart(2, '0')} /{' '}
+                  {String(totalSlides).padStart(2, '0')}
+                </span>
+
+                {/* Segmented Slide Selectors */}
+                <div
+                  className="flex items-center gap-1.5"
+                  role="tablist"
+                  aria-label="Selecionar projeto do carrossel"
+                >
+                  {filteredProjects.map((project, idx) => {
+                    const isActive = idx === safeIndex;
+                    return (
+                      <button
+                        key={project.id}
+                        type="button"
+                        role="tab"
+                        aria-selected={isActive}
+                        aria-label={`Mostrar projeto ${idx + 1}: ${project.client}`}
+                        onClick={() => goToSlide(idx)}
+                        className={
+                          isActive
+                            ? 'h-2.5 w-8 rounded-full bg-primary transition-all duration-200 cursor-pointer'
+                            : 'h-2.5 w-2.5 rounded-full bg-border-strong hover:bg-foreground/60 transition-all duration-200 cursor-pointer'
+                        }
+                      />
+                    );
+                  })}
                 </div>
-              </button>
-            </motion.article>
-          ))}
-        </div>
+              </div>
+
+              <div className="flex items-center gap-2">
+                <Button
+                  type="button"
+                  variant="outline"
+                  size="icon"
+                  onClick={goToPrevious}
+                  disabled={totalSlides <= 1}
+                  aria-label="Projeto anterior"
+                >
+                  <ChevronLeft className="h-5 w-5" aria-hidden="true" />
+                </Button>
+                <Button
+                  type="button"
+                  variant="outline"
+                  size="icon"
+                  onClick={goToNext}
+                  disabled={totalSlides <= 1}
+                  aria-label="Próximo projeto"
+                >
+                  <ChevronRight className="h-5 w-5" aria-hidden="true" />
+                </Button>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
 
       {/* Case Study Detail Modal */}

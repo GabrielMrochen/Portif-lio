@@ -171,6 +171,31 @@ export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
       'Aplicação em landing page institucional',
     ],
   },
+  {
+    id: 'vertice-consultoria',
+    title: 'Landing Page de Alta Conversão B2B',
+    client: 'Vértice Consultoria Empresarial',
+    category: 'Criação de Sites',
+    year: '2026',
+    metricValue: '+92% em reuniões agendadas via WhatsApp',
+    metricContext: 'em comparação ao site antigo da consultoria',
+    deliveryTime: '24 horas',
+    image: '/src/assets/images/hero_vyronix_studio_1794526330552.jpg',
+    imageAlt:
+      'Monitor widescreen e notebook exibindo landing page corporativa moderna desenvolvida pela Vyronix Tech',
+    summary:
+      'Página estratégica desenvolvida no formato Site Qualificado para transformar visitas de anúncios em conversas diretas com o time comercial.',
+    challenge:
+      'Os anúncios geravam cliques, mas a página anterior tinha navegação confusa e carregamento lento no celular.',
+    solution:
+      'Criamos uma arquitetura direta com prova social logo abaixo da dobra, apresentação clara dos serviços e CTA fixo para agendamento pelo WhatsApp.',
+    deliverables: [
+      'Design personalizado mobile-first',
+      'Estrutura até 5 seções estratégicas',
+      'Integração direta com WhatsApp',
+      'SEO técnico e Open Graph',
+    ],
+  },
 ];
 
 export interface TestimonialItem {
