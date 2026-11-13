@@ -15,9 +15,9 @@ export interface NavItem {
 export const NAV_ITEMS: NavItem[] = [
   { label: 'Sobre', href: '#sobre' },
   { label: 'Serviços', href: '#servicos' },
-  { label: 'Portfólio', href: '#portfolio' },
   { label: 'Depoimentos', href: '#depoimentos' },
   { label: 'Planos', href: '#planos' },
+  { label: 'Contato', href: '#contato' },
 ];
 
 export interface HeroMetric {
@@ -89,112 +89,6 @@ export const SERVICES: ServiceItem[] = [
     ],
     whatsappMessage:
       'Olá, Vyronix Tech! Gostaria de solicitar um orçamento para Design e Identidade Visual.',
-  },
-];
-
-export type PortfolioCategory =
-  | 'Todos'
-  | 'Criação de Sites'
-  | 'Identidade Visual';
-
-export interface PortfolioProject {
-  id: string;
-  title: string;
-  client: string;
-  category: Exclude<PortfolioCategory, 'Todos'>;
-  year: string;
-  metricValue: string;
-  metricContext: string;
-  deliveryTime: string;
-  image: string;
-  imageAlt: string;
-  summary: string;
-  challenge: string;
-  solution: string;
-  deliverables: string[];
-}
-
-export const PORTFOLIO_CATEGORIES: PortfolioCategory[] = [
-  'Todos',
-  'Criação de Sites',
-  'Identidade Visual',
-];
-
-export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
-  {
-    id: 'construtora-horizonte',
-    title: 'Portal Institucional e Captação de Obras',
-    client: 'Axis Estruturas & Engenharia',
-    category: 'Criação de Sites',
-    year: '2026',
-    metricValue: '+148% em solicitações de orçamento',
-    metricContext: 'nos primeiros 90 dias após a publicação',
-    deliveryTime: '24 horas',
-    image: '/src/assets/images/portfolio_site_institucional_1794526331898.jpg',
-    imageAlt:
-      'Notebook sobre pedra escura exibindo o site institucional desenvolvido pela Vyronix Tech para empresa de engenharia',
-    summary:
-      'Site corporativo de alta credibilidade com foco em apresentação de obras executadas e solicitação rápida de propostas via WhatsApp.',
-    challenge:
-      'A empresa dependia apenas de indicações e possuía um site desatualizado que não transmitia o porte técnico dos projetos realizados.',
-    solution:
-      'Estruturamos uma vitrine de portfólio técnico com carregamento instantâneo, provas de execução e botões diretos de orçamento integrados ao WhatsApp comercial.',
-    deliverables: [
-      'Site responsivo completo',
-      'Catálogo de obras e serviços',
-      'Formulário com roteamento para WhatsApp',
-      'SEO técnico inicial',
-    ],
-  },
-  {
-    id: 'aurora-identidade',
-    title: 'Sistema de Marca e Direção Visual Digital',
-    client: 'Aurora Dynamics Consultoria',
-    category: 'Identidade Visual',
-    year: '2026',
-    metricValue: '14 pontos de contato padronizados',
-    metricContext: 'entre site, propostas comerciais e banners digitais',
-    deliveryTime: '48 horas',
-    image: '/src/assets/images/portfolio_identidade_visual_1794526332615.jpg',
-    imageAlt:
-      'Apresentação editorial de sistema de identidade visual com papelaria corporativa, paleta laranja e tablet com guia de marca',
-    summary:
-      'Reestruturação completa da linguagem visual da marca para alinhar apresentações comerciais, banners de anúncios e presença web.',
-    challenge:
-      'A marca utilizava peças desconexas em cada canal, reduzindo a percepção de valor durante negociações com novos clientes.',
-    solution:
-      'Criamos uma identidade visual coesa com paleta grafite e violeta corporativo, tipografia padronizada e kit de banners prontos para campanhas.',
-    deliverables: [
-      'Guia visual e paleta corporativa',
-      'Templates para banners e redes sociais',
-      'Sistema tipográfico para web',
-      'Aplicação em landing page institucional',
-    ],
-  },
-  {
-    id: 'vertice-consultoria',
-    title: 'Landing Page de Alta Conversão B2B',
-    client: 'Vértice Consultoria Empresarial',
-    category: 'Criação de Sites',
-    year: '2026',
-    metricValue: '+92% em reuniões agendadas via WhatsApp',
-    metricContext: 'em comparação ao site antigo da consultoria',
-    deliveryTime: '24 horas',
-    image: '/src/assets/images/hero_vyronix_studio_1794526330552.jpg',
-    imageAlt:
-      'Monitor widescreen e notebook exibindo landing page corporativa moderna desenvolvida pela Vyronix Tech',
-    summary:
-      'Página estratégica desenvolvida no formato Site Qualificado para transformar visitas de anúncios em conversas diretas com o time comercial.',
-    challenge:
-      'Os anúncios geravam cliques, mas a página anterior tinha navegação confusa e carregamento lento no celular.',
-    solution:
-      'Criamos uma arquitetura direta com prova social logo abaixo da dobra, apresentação clara dos serviços e CTA fixo para agendamento pelo WhatsApp.',
-    deliverables: [
-      'Design personalizado mobile-first',
-      'Estrutura até 5 seções estratégicas',
-      'Integração direta com WhatsApp',
-      'SEO técnico e Open Graph',
-    ],
   },
 ];
 

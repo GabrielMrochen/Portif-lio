@@ -115,7 +115,7 @@ export function ContactSection() {
   return (
     <section
       id="contato"
-      className="bg-cement-band py-16 sm:py-24 border-b border-border"
+      className="bg-background py-16 sm:py-24 border-b border-border"
     >
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-14">

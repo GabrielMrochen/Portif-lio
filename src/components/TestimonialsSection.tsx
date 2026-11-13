@@ -8,7 +8,7 @@ export function TestimonialsSection() {
   return (
     <section
       id="depoimentos"
-      className="bg-background py-16 sm:py-24 border-b border-border"
+      className="bg-cement-band py-16 sm:py-24 border-b border-border"
     >
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="max-w-2xl">

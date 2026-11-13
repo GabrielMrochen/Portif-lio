@@ -52,14 +52,6 @@ export function Footer() {
                   </a>
                 </li>
               ))}
-              <li>
-                <a
-                  href="#contato"
-                  className="text-secondary-foreground/75 transition-colors hover:text-secondary-foreground"
-                >
-                  Contato
-                </a>
-              </li>
             </ul>
           </div>
 

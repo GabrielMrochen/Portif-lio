@@ -7,7 +7,6 @@ import { Header } from '@/src/components/Header';
 import { HeroSection } from '@/src/components/HeroSection';
 import { AboutSection } from '@/src/components/AboutSection';
 import { ServicesSection } from '@/src/components/ServicesSection';
-import { PortfolioSection } from '@/src/components/PortfolioSection';
 import { TestimonialsSection } from '@/src/components/TestimonialsSection';
 import { ContactSection } from '@/src/components/ContactSection';
 import { FloatingWhatsApp } from '@/src/components/FloatingWhatsApp';
@@ -36,16 +35,13 @@ export default function App() {
         {/* 3. Serviços */}
         <ServicesSection />
 
-        {/* 4. Portfólio / Projetos */}
-        <PortfolioSection />
-
-        {/* 5. Depoimentos */}
+        {/* 4. Depoimentos */}
         <TestimonialsSection />
 
-        {/* 6. Formulário de contato */}
+        {/* 5. Formulário de contato */}
         <ContactSection />
 
-        {/* 8. Preços / Planos */}
+        {/* 6. Preços / Planos */}
         <PricingSection />
       </main>
 

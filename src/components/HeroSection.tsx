@@ -52,10 +52,10 @@ export function HeroSection() {
               </Button>
 
               <a
-                href="#portfolio"
+                href="#planos"
                 className="inline-flex min-h-[44px] items-center justify-center gap-2 px-2 text-sm font-semibold text-foreground transition-colors duration-150 hover:text-accent-text whitespace-nowrap shrink-0"
               >
-                <span>Ver projetos recentes</span>
+                <span>Conhecer planos e valores</span>
                 <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </a>
             </div>
@@ -69,8 +69,8 @@ export function HeroSection() {
           >
             <div className="relative w-full overflow-hidden rounded-xl border border-border bg-surface-graphite shadow-elevated-token">
               <ResilientImage
-                src="/src/assets/images/hero_vyronix_studio_1794526330552.jpg"
-                alt="Estação de trabalho da Vyronix Tech exibindo interface corporativa moderna em monitor widescreen"
+                src="/src/assets/images/hero_vscode_dark_1794528326979.jpg"
+                alt="Monitor ultrawide exibindo código de programação React e TypeScript no Visual Studio Code em fundo preto com sintaxe colorida"
                 fallbackTitle="Vyronix Tech — Engenharia e Design Web"
                 loading="eager"
                 containerClassName="aspect-[16/10] lg:aspect-auto lg:h-full w-full"

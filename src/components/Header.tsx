@@ -36,13 +36,13 @@ export function Header() {
         {/* Zone 2: Concise Single-Line Navigation Links */}
         <nav
           aria-label="Navegação principal"
-          className="hidden md:flex items-center gap-7 text-sm font-medium text-muted-foreground"
+          className="hidden md:flex items-center gap-2 text-sm font-medium text-muted-foreground"
         >
           {NAV_ITEMS.map((item) => (
             <a
               key={item.href}
               href={item.href}
-              className="whitespace-nowrap shrink-0 py-1 transition-colors duration-150 hover:text-foreground underline-offset-4 hover:underline"
+              className="whitespace-nowrap shrink-0 rounded-md px-3 py-1.5 transition-colors duration-150 hover:bg-surface-graphite hover:text-secondary-foreground focus-visible:bg-surface-graphite focus-visible:text-secondary-foreground"
             >
               {item.label}
             </a>
@@ -50,13 +50,13 @@ export function Header() {
         </nav>
 
         {/* Zone 3: Instagram + Primary Action */}
-        <div className="hidden md:flex items-center gap-4 shrink-0">
+        <div className="hidden md:flex items-center gap-3 shrink-0">
           <a
             href={INSTAGRAM_URL}
             target="_blank"
             rel="noopener noreferrer"
             aria-label={`Instagram da Vyronix Tech (${INSTAGRAM_HANDLE})`}
-            className="inline-flex items-center gap-1.5 whitespace-nowrap shrink-0 text-sm font-medium text-muted-foreground transition-colors duration-150 hover:text-foreground py-2 px-2 rounded-md"
+            className="inline-flex items-center gap-1.5 whitespace-nowrap shrink-0 rounded-md px-2.5 py-1.5 text-sm font-medium text-muted-foreground transition-colors duration-150 hover:bg-surface-graphite hover:text-secondary-foreground"
           >
             <Instagram className="h-4 w-4" aria-hidden="true" />
             <span className="hidden lg:inline">{INSTAGRAM_HANDLE}</span>
@@ -82,7 +82,7 @@ export function Header() {
           aria-expanded={mobileMenuOpen}
           aria-controls="menu-mobile"
           aria-label={mobileMenuOpen ? 'Fechar menu' : 'Abrir menu de navegação'}
-          className="inline-flex h-11 w-11 items-center justify-center rounded-lg border border-border bg-surface-elevated text-foreground transition-colors hover:bg-surface-subtle md:hidden cursor-pointer"
+          className="inline-flex h-11 w-11 items-center justify-center rounded-lg border border-border bg-surface-elevated text-foreground transition-colors hover:bg-surface-graphite hover:text-secondary-foreground md:hidden cursor-pointer"
         >
           {mobileMenuOpen ? (
             <X className="h-5 w-5" aria-hidden="true" />
@@ -104,18 +104,11 @@ export function Header() {
                 key={item.href}
                 href={item.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="flex min-h-[44px] items-center rounded-lg px-3 text-base font-medium text-foreground transition-colors hover:bg-surface-subtle"
+                className="flex min-h-[44px] items-center rounded-lg px-3 text-base font-medium text-foreground transition-colors duration-150 hover:bg-surface-graphite hover:text-secondary-foreground"
               >
                 {item.label}
               </a>
             ))}
-            <a
-              href="#contato"
-              onClick={() => setMobileMenuOpen(false)}
-              className="flex min-h-[44px] items-center rounded-lg px-3 text-base font-medium text-foreground transition-colors hover:bg-surface-subtle"
-            >
-              Contato
-            </a>
           </nav>
 
           <div className="mt-4 flex flex-col gap-3 border-t border-border pt-4">
@@ -123,7 +116,7 @@ export function Header() {
               href={INSTAGRAM_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex min-h-[44px] items-center gap-2 px-3 text-sm font-medium text-muted-foreground hover:text-foreground"
+              className="inline-flex min-h-[44px] items-center gap-2 rounded-lg px-3 text-sm font-medium text-muted-foreground transition-colors duration-150 hover:bg-surface-graphite hover:text-secondary-foreground"
             >
               <Instagram className="h-4 w-4" aria-hidden="true" />
               <span>Instagram {INSTAGRAM_HANDLE}</span>

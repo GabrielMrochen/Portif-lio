@@ -19,8 +19,8 @@ export function AboutSection() {
           >
             <div className="w-full overflow-hidden rounded-xl border border-border shadow-card-token">
               <ResilientImage
-                src="/src/assets/images/about_agency_craft_1794526331347.jpg"
-                alt="Especialista em design e estratégia digital da Vyronix Tech analisando layout de site e paleta de cores"
+                src="/src/assets/images/about_vscode_craft_1794528327810.jpg"
+                alt="Notebook exibindo código TypeScript e CSS no Visual Studio Code em fundo preto com letras coloridas"
                 fallbackTitle="Vyronix Tech — Estratégia e Execução"
                 containerClassName="aspect-[4/3] lg:aspect-auto lg:h-full w-full"
               />
